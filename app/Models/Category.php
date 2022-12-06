@@ -4,5 +4,5 @@ namespace App\Models;
 
 class Category extends RModel
 {
-    use HasFactory;
+
 }
