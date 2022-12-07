@@ -13,9 +13,9 @@
         <a href="#" class="navbar-brand">Roberto Bagulhos></a>
         <div class="collapse navbar-collapse">
             <div class="navbar-nav">
-                <a href="#" class="nav-link">HOME</a>
-                <a href="#" class="nav-link">Categorias</a>
-                <a href="#" class="nav-link">Cadastrar</a>
+                <a href="{{ route('home') }}" class="nav-link">HOME</a>
+                <a href="{{ route('category') }}" class="nav-link">Categorias</a>
+                <a href="{{ route('register') }}" class="nav-link">Cadastrar</a>
             </div>
         </div>
         <a href="#" class="btn btn-sm"><i class="fa fa-shopping-cart"></i></a>
