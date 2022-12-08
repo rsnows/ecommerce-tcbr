@@ -1,29 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h2>Categories</h2>
-
+@extends("layout")
+@section("content")
     @if(isset($categoryList) && count($categoryList) > 0)
         <ul>
+            <li><a href="{{ route('category') }}">Todas</a></li>
             @foreach($categoryList as $cat)
-            <li>{{ $cat->category_name }}</li>
+            <li><a href="{{ route('categoryById', ['category_id' => $cat->id]) }}">{{ $cat->category_name }}</a></li>
             @endforeach
         </ul>
     @endif
 
-    @if(isset($productList) && count($productList) > 0)
-        <ul>
-            @foreach($productList as $prod)
-            <li>{{ $prod->name }}</li>
-            @endforeach
-        </ul>
-    @endif
+    @include("_products", ['productList' => $productList])
 
-</body>
-</html>
+@endsection

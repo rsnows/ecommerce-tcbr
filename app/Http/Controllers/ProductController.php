@@ -13,7 +13,7 @@ class ProductController extends Controller
         $data = [];
 
         $productList = Product::all();
-        $data['list'] = $productList;
+        $data['productList'] = $productList;
 
         return view("home", $data);
     }
