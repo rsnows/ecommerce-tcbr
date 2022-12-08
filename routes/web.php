@@ -17,4 +17,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::match(['get', 'post'], '/', [ProductController::class, 'index'])->name('home');
 Route::match(['get', 'post'], '/category', [ProductController::class, 'category'])->name('category');
+Route::match(['get', 'post'], '/{category_id}/category', [ProductController::class, 'category'])->name('categoryById');
 Route::match(['get', 'post'], '/register', [ClientController::class, 'register'])->name('register');
