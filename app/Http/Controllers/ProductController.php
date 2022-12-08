@@ -9,6 +9,9 @@ class ProductController extends Controller
     public function index(Request $request){
         $data = [];
 
+        $productList = \App\Models\Product::all();
+        $data['list'] = $productList;
+
         return view("home", $data);
     }
 
