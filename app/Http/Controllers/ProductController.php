@@ -36,4 +36,20 @@ class ProductController extends Controller
 
         return view("category", $data);
     }
+
+    public function addToCart(Request $request, $product_id = 0){
+        $prod = Product::find($product_id);
+        if($prod){
+            $cart = session('cart', []);
+            array_push($cart, $prod);
+            session(['cart' => $cart]);
+        }
+        
+        return redirect()->route("home");
+    }
+    
+    public function showCart(Request $request){
+        $cart = session('cart', []);
+        dd($cart);
+    }
 }

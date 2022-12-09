@@ -19,3 +19,5 @@ Route::match(['get', 'post'], '/', [ProductController::class, 'index'])->name('h
 Route::match(['get', 'post'], '/category', [ProductController::class, 'category'])->name('category');
 Route::match(['get', 'post'], '/{category_id}/category', [ProductController::class, 'category'])->name('categoryById');
 Route::match(['get', 'post'], '/register', [ClientController::class, 'register'])->name('register');
+Route::match(['get', 'post'], '/{product_id}/cart/add', [ProductController::class, 'addToCart'])->name('addToCart');
+Route::match(['get', 'post'], '/cart', [ProductController::class, 'showCart'])->name('showCart');
