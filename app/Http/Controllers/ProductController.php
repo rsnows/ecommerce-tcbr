@@ -32,6 +32,7 @@ class ProductController extends Controller
   
         $data['categoryList'] = $categoryList;
         $data['productList'] = $productList;
+        $data['category_id'] = $category_id;
 
         return view("category", $data);
     }
