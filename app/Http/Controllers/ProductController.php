@@ -53,4 +53,13 @@ class ProductController extends Controller
         $data = ['cart' => $cart];
         return view('cart', $data);
     }
+
+    public function removeFromCart(Request $request, $index){
+        $cart = session('cart', []);
+        if(isset($cart[$index])){
+            unset($cart[$index]);
+        }
+        session(['cart' => $cart]);
+        return redirect()->route('showCart');
+    }
 }
