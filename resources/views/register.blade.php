@@ -3,7 +3,8 @@
         <div class="col-12">
             <h2 class="mb-3">Cadastrar cliente</h2>
         </div>
-        <form action="" method="post">
+        <form action="{{ route('registerClient') }}" method="post">
+            @csrf
             <div class="row">
                 <div class="col-6">
                     <div class="form-group">
@@ -25,9 +26,19 @@
                         Senha: <input type="password" name="password" class="form-control">
                     </div>
                 </div>
-                <div class="col-12">
+                <div class="col-8">
                     <div class="form-group">
-                        Endereço: <input type="text" name="address" class="form-control">
+                        Endereço: <input type="text" name="street" class="form-control">
+                    </div>
+                </div>
+                <div class="col-1">
+                    <div class="form-group">
+                        Número: <input type="text" name="number" class="form-control">
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        Complemento: <input type="text" name="addressDetailsx" class="form-control">
                     </div>
                 </div>
                 <div class="col-4">
