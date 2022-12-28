@@ -19,7 +19,17 @@ class ClientController extends Controller
         $values = $request->all();
         $user = new User();
         $user->fill($values);
+        $user->login = $request->input('cpf', '');
+        
         $address = new Address($values);
+
+        try {
+            $user->save();
+            $address->user_id = $user->id;
+            $address->save();
+        } catch (\Exception $e) {
+            
+        }
 
         return redirect()->route('register');
     }

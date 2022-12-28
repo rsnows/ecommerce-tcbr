@@ -28,7 +28,7 @@
                 </div>
                 <div class="col-8">
                     <div class="form-group">
-                        Endereço: <input type="text" name="street" class="form-control">
+                        Logradouro: <input type="text" name="street" class="form-control">
                     </div>
                 </div>
                 <div class="col-1">
