@@ -16,11 +16,11 @@ return new class extends Migration
         Schema::create('addresses', function (Blueprint $table) {
             $table->increments("id");
 
-            $table->string("street");
-            $table->string("number");
-            $table->string("city");
-            $table->string("state");
-            $table->string("postcode");
+            $table->string("street")->nullable();
+            $table->string("number")->nullable();
+            $table->string("city")->nullable();
+            $table->string("state")->nullable();
+            $table->string("postcode")->nullable();
             $table->integer("user_id")->unsigned();
             $table->timestamps();
             $table->foreign("user_id")->references("id")->on("users")->onDelete("cascade");

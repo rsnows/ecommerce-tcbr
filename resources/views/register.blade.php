@@ -1,4 +1,14 @@
 @extends("layout")
+@section("scriptjs")
+<script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js" integrity="sha512-pHVGpX7F/27yZ0ISY+VVjyULApbDlD0/X0rgGbTqCE7WFW5MezNTWG/dnhtbBuICzsd0WQPgpE4REBLv+UqChw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    $(function(){
+        $("#cpf").mask("000.000.000-00")
+        $("#postcode").mask("00000-000")
+    })
+</script>
+@endsection
 @section("content")
         <div class="col-12">
             <h2 class="mb-3">Cadastrar cliente</h2>
@@ -18,7 +28,7 @@
                 </div>
                 <div class="col-6">
                     <div class="form-group">
-                        CPF: <input type="text" name="cpf" class="form-control">
+                        CPF: <input type="text" name="cpf" id ="cpf" class="form-control">
                     </div>
                 </div>
                 <div class="col-6">
@@ -48,7 +58,7 @@
                 </div>
                 <div class="col-4">
                     <div class="form-group">
-                        CEP: <input type="text" name="postcode" class="form-control">
+                        CEP: <input type="text" name="postcode" id="postcode" class="form-control">
                     </div>
                 </div>
                 <div class="col-4">
