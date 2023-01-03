@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Address;
 use App\Models\User;
+use App\Services\ClientService;
 
 class ClientController extends Controller
 {
@@ -26,16 +27,14 @@ class ClientController extends Controller
         
         $address = new Address($values);
 
-        try {
-            \DB::beginTransaction();
-            $user->save();
-            $address->user_id = $user->id;
-            $address->save();
-            \DB::commit();
-        } catch (\Exception $e) {
-            \DB::rollback();
-        }
+        $clientService = new ClientService();
+        $result = $clientService->saveUser($user, $address);
+        
+        $message = $result["message"];
+        $status = $result["status"];
 
+        $request->session()->flash($status, $message);
+        
         return redirect()->route('register');
     }
 }
