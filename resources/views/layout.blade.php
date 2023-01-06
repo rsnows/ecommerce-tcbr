@@ -17,7 +17,11 @@
                 <a href="{{ route('home') }}" class="nav-link">HOME</a>
                 <a href="{{ route('category') }}" class="nav-link">Categorias</a>
                 <a href="{{ route('register') }}" class="nav-link">Cadastrar</a>
+                @if(!Auth::user())
                 <a href="{{ route('login') }}" class="nav-link">Login</a>
+                @else
+                <a href="{{ route('logout') }}" class="nav-link">Sair</a>
+                @endif
             </div>
         </div>
         <a href="{{ route('showCart') }}" class="btn btn-sm"><i class="fa fa-shopping-cart"></i></a>
@@ -25,6 +29,12 @@
     
     <div class="container">
         <div class="row">
+
+             @if(\Auth::user())
+                <div class="col-12">
+                    <p class="text-right">Boas-vindas, {{ \Auth::user()->name }}. <a href="{{ route('logout') }}">Sair</a>.</p>
+                </div>
+            @endif
             @if($message = Session::get("err"))
                 <div class="col-12">
                     <div class="alert alert-danger">{{ $message }}</div>

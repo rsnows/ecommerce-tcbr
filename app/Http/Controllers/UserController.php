@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -11,10 +11,10 @@ class UserController extends Controller
     {
         $data = [];
 
-
         if($request->isMethod("POST"))
         {
             $login = $request->input("login");
+            $login = preg_replace("/[^0-9]/", "", $login);
             $password = $request->input("password");
 
             $credential = [ 'login' => $login, 'password' => $password];
@@ -29,5 +29,11 @@ class UserController extends Controller
         }
 
         return view("login", $data);
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->route("home");
     }
 }
