@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Category;
 use App\Models\Product;
-
+use App\Services\SaleService;
 
 class ProductController extends Controller
 {
@@ -61,5 +62,19 @@ class ProductController extends Controller
         }
         session(['cart' => $cart]);
         return redirect()->route('showCart');
+    }
+
+    public function buyCart(Request $request){
+        $prods = session('cart', []);
+        $saleService = new SaleService();
+        $result = $saleService->finishSale($prods, Auth::user());
+
+        if($result["status"] == "ok"){
+            $request->session()->forget("cart");
+        }
+
+        $request->session()->flash($result["status"], $result["message"]);
+        return redirect()->route('showCart');
+
     }
 }
