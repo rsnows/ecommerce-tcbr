@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Category;
+use App\Models\Order;
 use App\Models\Product;
 use App\Services\SaleService;
 
@@ -76,5 +77,17 @@ class ProductController extends Controller
         $request->session()->flash($result["status"], $result["message"]);
         return redirect()->route('showCart');
 
+    }
+
+    public function history(Request $request){
+        $data = [];
+
+        $userId = Auth::user()->id;
+
+        $orderList = Order::where('user_id', $userId)->orderBy("order_date", "desc")->get();
+
+        $data['list'] = $orderList;
+
+        return view('history', $data);
     }
 }

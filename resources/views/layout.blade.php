@@ -21,6 +21,7 @@
                 <a href="{{ route('login') }}" class="nav-link">Login</a>
                 @else
                 <a href="{{ route('logout') }}" class="nav-link">Sair</a>
+                <a href="{{ route('history') }}" class="nav-link">Minhas Compras</a>
                 @endif
             </div>
         </div>
