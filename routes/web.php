@@ -31,3 +31,5 @@ Route::match(['get', 'post'], '/cart', [ProductController::class, 'showCart'])->
 Route::match(['get', 'post'], '/{index}/remove', [ProductController::class, 'removeFromCart'])->name('removeFromCart');
 Route::post('/cart/buy', [ProductController::class, 'buyCart'])->name('buyCart');
 Route::match(['get', 'post'], '/history', [ProductController::class, 'history'])->name('history');
+Route::post('/orders/details', [ProductController::class, 'orderDetails'])->name('orderDetails');
+

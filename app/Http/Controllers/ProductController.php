@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Category;
 use App\Models\Order;
+use App\Models\OrderItem;
 use App\Models\Product;
 use App\Services\SaleService;
 
@@ -89,5 +90,13 @@ class ProductController extends Controller
         $data['list'] = $orderList;
 
         return view('history', $data);
+    }
+
+    public function orderDetails(Request $request){
+        $orderId = $request->input("id");
+        $itemList = OrderItem::join("products", "products.id", "=", "order_items.product_id")->where("order_id", $orderId)->get(["order_items.*", "order_items.value as item_value", "products.*"]);
+
+        $data["itemList"] = $itemList;
+        return view("details", $data);
     }
 }
